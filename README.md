@@ -13,3 +13,5 @@ https://api.uixsj.cn/hitokoto/get?type=hitokoto&code=json
 
 目前项目目前不够完善，会持续优化
 
+感谢:
+https://github.com/xingag/tools_python.git
