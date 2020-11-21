@@ -1,4 +1,4 @@
-# CreatShortVideo
+# CreateShortVideo
 python实现实时自动生成短视频
 
 基本思路
@@ -11,7 +11,7 @@ python实现实时自动生成短视频
 通过一言api获取文案信息
 https://api.uixsj.cn/hitokoto/get?type=hitokoto&code=json
 
-目前项目目前不够完善，会持续优化
+项目目前不完善，会持续按照思路进行优化
 
 感谢:
 https://github.com/xingag/tools_python.git
