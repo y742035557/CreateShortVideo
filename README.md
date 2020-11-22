@@ -8,10 +8,21 @@ python实现实时自动生成短视频
 并自动发布到短视频网站。
 
 
-通过一言api获取文案信息
-https://api.uixsj.cn/hitokoto/get?type=hitokoto&code=json
+项目目前不够完善，文档等会持续优化
 
-目前项目目前不够完善，会持续优化
+ver:2020/11/22
 
-感谢:
+	1.追加图片自动下载模块
+
+	2.追加音频下载模块
+
+	3.追加静态视频py文件
+
+	4.文案搜索API
+
+
+
+参考:
 https://github.com/xingag/tools_python.git
+https://github.com/CcphAmy/NetEaseCloudMusic-nonmembership-list-download
+https://api.uixsj.cn/hitokoto/get?type=hitokoto&code=json
