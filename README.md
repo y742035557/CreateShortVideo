@@ -22,7 +22,7 @@ ver:2020/11/22
 
 
 
-参考:
+参考并致谢:
 https://github.com/xingag/tools_python.git
 https://github.com/CcphAmy/NetEaseCloudMusic-nonmembership-list-download
 https://api.uixsj.cn/hitokoto/get?type=hitokoto&code=json
