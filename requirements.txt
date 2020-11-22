@@ -1,0 +1,6 @@
+wxPython==4.1.0
+requests==2.22.0
+PyExecJS==1.5.1
+moviepy==1.0.3
+opencv_python==3.4.2.17
+beautifulsoup4==4.9.3
