@@ -78,4 +78,3 @@ def generate_text_clip(text_content, font_params, duration):
 
     return TextClip(text_content, font='./fonts/STHeiti Medium.ttc',fontsize=font_params.get('size'), kerning=font_params.get('kerning'),
                     color=font_params.get('color')).set_position(("center", 150)).set_duration(duration)
-

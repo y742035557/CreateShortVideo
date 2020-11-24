@@ -1,5 +1,6 @@
 #encoding: utf-8  
 import os
+import re
 import datetime
 from moviepy.video import fx
 
@@ -21,7 +22,7 @@ class Static_Video(object):
         self.video_height = 0
         self.fps = 25
         self.time = 30
-        self.font_params = {'size': 100,'color': 'black','kerning': 5,'position': 0}
+        self.font_params = {'size': 100,'color': 'red','kerning': 5,'position': 0}
 
    
     def find_new_file(self,dir='./source/img'):
@@ -42,11 +43,13 @@ class Static_Video(object):
         new_audio_name=self.find_new_file('./source/audio/')
 
         image_video_clip = one_pic_to_video(new_img_name, './source/temp_img_video.mp4', self.fps, self.time)
+
         self.audio= AudioFileClip(new_audio_name).subclip(0, image_video_clip.duration - 0)
 
         #生成描述信息
         desc_text_clip = generate_text_clip(self.desc, self.font_params, image_video_clip.duration)
 
+        #desc_text_clip=set_list_text_clip(txt_, self.font_params, image_video_clip.duration)
         #视频加入描述信息
         video_with_text_clip = video_with_text(image_video_clip, desc_text_clip)
 
@@ -54,7 +57,6 @@ class Static_Video(object):
         self.video_with_audio(video_with_text_clip)
 
     
-
     def __get_frame(self, time):
 
         position1 = (0, 0)
@@ -84,6 +86,5 @@ if __name__ == '__main__':
     # 原视频文件 没用
     video_source = './source/'
     text_info = get_info()
-
-    video_re = Static_Video(video_source, text_info)
+    video_re = Static_Video(video_source, 'a,b,C.e,u')
     video_re.run_static()
