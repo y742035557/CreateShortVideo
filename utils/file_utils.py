@@ -16,7 +16,7 @@ def del_temp_file(path):
         for file_name in file_list:
             print(file_name)
             if file_name.startswith('temp'):
-                os.remove(path + file_name)
+                os.remove(path +os.sep+file_name)
 
 
 

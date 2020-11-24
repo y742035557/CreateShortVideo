@@ -13,7 +13,7 @@ from utils.video_utils import *
 from utils.file_utils import *
 from utils.info_utils import *
 from emotion.emotion_analsys import *
-
+from cutto import *
 def random_select_audio(path='.source/img',typ='mp3'):
     audio_list=[]
     for home, dirs, files in os.walk(path):
@@ -47,7 +47,7 @@ def video_with_audio(audio,video_with_text_clip):
                                                                remove_temp=True
                                                                )
     #删除所有的临时文件
-    #del_temp_file("./source/")
+    del_temp_file("./source/")
 
 
 def addword2colorimg(words='我要发表心灵，而不公开隐私',W=1280,H=720):
@@ -73,13 +73,13 @@ def addword2colorimg(words='我要发表心灵，而不公开隐私',W=1280,H=72
     
     #cv2img = cv2.cvtColor(np.array(pilimg),cv2.COLOR_RGB2BGR)
     now = datetime.datetime.now().strftime('%Y%m%d%H%M')
-    pilimg.save('./source/img/temp_%s.jpg'%now)
+    pilimg.save('./source/temp.jpg')
 
-    image_video_clip=one_pic_to_video('./source/img/temp_%s.jpg'%now, './source/temp_img_video.mp4', 25, 60)
+    image_video_clip=one_pic_to_video('./source/temp.jpg', './source/temp_img_video.mp4', 25, 60)
     new_audio_name=random_select_audio('../music_source/')
-    audio= AudioFileClip(new_audio_name).subclip(4, image_video_clip.duration - 0)
-    video_with_audio(audio,image_video_clip)
-
+    audio= AudioFileClip(new_audio_name).subclip(4, image_video_clip.duration +4)
+    video_with_audio(audio,image_video_clip) 
+    special_effects(now+"_output.mp4",now+"_output.mp4")
 
 def addword2binimg(words='我要发表心灵，而不公开隐私',W=1280,H=720):
     # Load image, define rectangle bounds
@@ -100,12 +100,12 @@ def addword2binimg(words='我要发表心灵，而不公开隐私',W=1280,H=720)
         draw.text((x,y), txt, 255, font=font)
 
     now = datetime.datetime.now().strftime('%Y%m%d%H%M')
-    pilimg.save('./source/img/temp_%s.jpg'%now)
-    image_video_clip=one_pic_to_video('./source/img/temp_%s.jpg'%now, './source/temp_img_video.mp4', 25, 60)
+    pilimg.save('./source/temp.jpg')
+    image_video_clip=one_pic_to_video('./source/temp.jpg', './source/temp_img_video.mp4', 25, 60)
     new_audio_name=random_select_audio('../music_source/')
     audio= AudioFileClip(new_audio_name).subclip(4, image_video_clip.duration - 0)
     video_with_audio(audio,image_video_clip)
-
+    special_effects(now+"_output.mp4",now+"_output.mp4")
 if __name__ == '__main__':
 
     text_info = get_info()

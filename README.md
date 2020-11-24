@@ -20,7 +20,10 @@ ver:2020/11/22
 
 	4.文案搜索API
 
-
+ver:2020/11/24
+    追加文本情感分析 使用百度情绪分析API  后期自己搭建nlp检测模型
+    追加特效 淡入淡出
+    
 
 参考并致谢:
 https://github.com/xingag/tools_python.git 
