@@ -20,12 +20,21 @@ ver:2020/11/22
 
 	4.文案搜索API
 
-ver:2020/11/24
-    追加文本情感分析 使用百度情绪分析API  后期自己搭建nlp检测模型
-    追加特效 淡入淡出
-    
+ver:2020/11/24 
 
-参考并致谢:
-https://github.com/xingag/tools_python.git 
-https://github.com/CcphAmy/NetEaseCloudMusic-nonmembership-list-download 
-https://api.uixsj.cn/hitokoto/get?type=hitokoto&code=json 
+    追加文本情感分析 
+    使用百度情绪分析API后期搭建nlp检测模型
+    追加特效 淡入淡出 
+
+ver:2020/11/25 
+    
+    修改视频中文显示bug 
+
+    追加中文短句翻译为英文
+
+    追加动态视频剪辑     
+
+参考并致谢: 
+https://github.com/xingag/tools_python.git  
+https://github.com/CcphAmy/NetEaseCloudMusic-nonmembership-list-download  
+https://api.uixsj.cn/hitokoto/get?type=hitokoto&code=json  

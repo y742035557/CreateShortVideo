@@ -125,8 +125,7 @@ class Read_Video(object):
                                                                    codec='libx264',
                                                                    audio_codec='aac',
                                                                    temp_audiofile='temp-audio.m4a',
-                                                                   remove_temp=True
-                                                                   )
+                                                                   remove_temp=True)
         # 删除所有的临时文件
         #del_temp_file("./source/")
 
