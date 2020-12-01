@@ -13,12 +13,11 @@ from utils.file_utils import *
 from utils.info_utils import *
 from utils.effect_utils import *
 
-def random_select_audio(path='./source/img',typ='mp3'):
+def random_select_audio(path='./source/',typ='mp3'):
     audio_list=[]
     for home, dirs, files in os.walk(path):
         for filename in files:
             if filename.endswith(typ):
-                print(filename)
                 fullname = os.path.join(home, filename)
                 audio_list.append(fullname)
     print(random.choice(audio_list))
@@ -47,12 +46,12 @@ def add_logo(words='我要发表心灵，而不公开隐私'):
     now = datetime.datetime.now().strftime('%Y%m%d%H%M')
     pattern = r',|\.|/|;|\'|`|\[|\]|<|>|\?|:|"|\{|\}|\~|!|@|#|\$|%|\^|&|\(|\)|-|=|\_|\+|，|。|、|；|‘|’|【|】|·|！|…|（|）'
     dy=30
-    y=100
+    y=50
     txt_list = re.split(pattern, words)
     video_path=random_select_audio('../video_source/','mp4')
     video_raw = VideoFileClip(video_path)
     times = video_raw.duration
-    if times<=20:
+    if times<=25:
         video_raw = concatenate_videoclips([video_raw,video_raw])
         video=video_raw
         times=times*2
@@ -61,7 +60,7 @@ def add_logo(words='我要发表心灵，而不公开隐私'):
        w,h=video_raw.w,video_raw.h
        video = VideoFileClip(video_path).subclip(t_start=0,t_end=times)
    
-    font = ImageFont.truetype("simhei.ttf", 100, encoding="utf-8")
+    font = ImageFont.truetype("simhei.ttf", int(w/30), encoding="utf-8")
 
     logos = []
     for i,txt in enumerate(txt_list):
@@ -71,7 +70,7 @@ def add_logo(words='我要发表心灵，而不公开隐私'):
         y = y+text_width[1]
         (x,y) = (int((w-text_width[0]/2)/2), y)
         try: 
-            logo = (TextClip((txt), fontsize=45, font='Simhei', color='black')
+            logo = (TextClip((txt), fontsize=int(w/50), font='Simhei', color='black')
                     .set_start(0).set_end(times) 
                     .set_pos((x,y)))
 

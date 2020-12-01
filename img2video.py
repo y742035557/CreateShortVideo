@@ -2,9 +2,7 @@ import cv2
 import re
 import numpy as np
 import random
-from utils.info_utils import *
 from PIL import Image, ImageDraw, ImageFont
-from utils.img_utils import *
 from moviepy.video import fx
 import os
 import datetime
@@ -16,16 +14,16 @@ from emotion.emotion_analsys import *
 from utils.effect_utils import *
 
 
-def random_select_audio(path='./source/',typ='mp3'):
-    audio_list=[]
+def random_select_file(path='./source/',typ='mp3'):
+    file_list=[]
     for home, dirs, files in os.walk(path):
         for filename in files:
             if filename.endswith(typ):
                 print(filename)
                 fullname = os.path.join(home, filename)
-                audio_list.append(fullname)
-    print(random.choice(audio_list))
-    return random.choice(audio_list)
+                file_list.append(fullname)
+    print(random.choice(file_list))
+    return random.choice(file_list)
     
 def find_new_file(path='./source/'):
     '''查找目录下最新的文件'''
@@ -54,8 +52,8 @@ def video_with_audio(audio,video_with_text_clip):
 
 def addword2colorimg(words='我要发表心灵，而不公开隐私',W=1280,H=720):
     # Load image, define rectangle bounds
-    image = cv2.imread(find_new_file())
-    pattern = r',|\.|/|;|\'|`|\[|\]|<|>|\?|:|"|\{|\}|\~|!|@|#|\$|%|\^|&|\(|\)|-|=|\_|\+|，|。|、|；|‘|’|【|】|·|！| |…|（|）'
+    image = cv2.imread(random_select_file('../image_source/','jpg'))
+    pattern = r',|\.|/|;|\'|`|\[|\]|<|>|\?|:|"|\{|\}|\~|!|@|#|\$|%|\^|&|\(|\)|=|\_|\+|，|。|、|；|‘|’|【|】|·|！| |…|（|）'
     dy=30
     y=150
     #image = np.zeros([H,W], dtype=np.uint8)
@@ -65,7 +63,7 @@ def addword2colorimg(words='我要发表心灵，而不公开隐私',W=1280,H=72
     txt_list = re.split(pattern, words)
     pilimg = Image.fromarray(pil_img)
     draw = ImageDraw.Draw(pilimg)
-    font = ImageFont.truetype("simhei.ttf", 100, encoding="utf-8") 
+    font = ImageFont.truetype("simhei.ttf", int(W/30), encoding="utf-8") 
 
     for i,txt in enumerate(txt_list):
         text_width = font.getsize(txt)
@@ -86,7 +84,7 @@ def addword2colorimg(words='我要发表心灵，而不公开隐私',W=1280,H=72
 def addword2binimg(words='我要发表心灵，而不公开隐私',W=1280,H=720):
     # Load image, define rectangle bounds
     #image = cv2.imread('1.jpg')
-    pattern = r',|\.|/|;|\'|`|\[|\]|<|>|\?|:|"|\{|\}|\~|!|@|#|\$|%|\^|&|\(|\)|-|=|\_|\+|，|。|、|；|‘|’|【|】|·|！| |…|（|）'
+    pattern = r',|\.|/|;|\'|`|\[|\]|<|>|\?|:|"|\{|\}|\~|!|@|#|\$|%|\^|&|\(|\)|=|\_|\+|，|。|、|；|‘|’|【|】|·|！| |…|（|）'
     dy=30
     y=150
     image = np.zeros([H,W], dtype=np.uint8)
@@ -104,16 +102,17 @@ def addword2binimg(words='我要发表心灵，而不公开隐私',W=1280,H=720)
     now = datetime.datetime.now().strftime('%Y%m%d%H%M')
     pilimg.save('./source/temp.jpg')
     image_video_clip=one_pic_to_video('./source/temp.jpg', './source/temp_img_video.mp4', 25, 60)
-    new_audio_name=random_select_audio('../music_source/')
+    new_audio_name=random_select_file('../music_source/')
     audio= AudioFileClip(new_audio_name).subclip(4, image_video_clip.duration - 0)
     video_with_audio(audio,image_video_clip)
-    special_effects(now+"_output.mp4",now+"_output.mp4")
+    special_effects("output.mp4",now+"_output.mp4")
 
 if __name__ == '__main__':
-
+    #文案api
     text_info = get_info()
+    #古诗词api
+    text_info=get_poetry()
+    #情绪api
     emotion=analsys(text_info)
-    print(emotion)
     #addword2binimg(text_info)
-    #addword2colorimg(text_info)
-    vodeo2video(text_info)
+    addword2colorimg(text_info)

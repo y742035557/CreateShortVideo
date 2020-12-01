@@ -28,11 +28,11 @@ https://blog.csdn.net/ucsheep/article/details/82787043
 def special_effects(inputfile,outputfile):
     video=VideoFileClip(inputfile)
     w,h=video.size
-    subvideo=video.subclip(0,8).fadein(8,(0.5,1,1))
+    subvideo=video.subclip(0,8).fadein(4,(0.5,1,1))
     subvideo1=video.subclip(8,video.duration-6)
-    subvideo2=video.subclip(video.duration-6).fadeout(3,(0,0,0))
+    subvideo2=video.subclip(video.duration-6).fadeout(2,(0,0,0))
 
-    txt = TextClip('---YQL python auto create',font='simhei.ttf',fontsize=40)
+    txt = TextClip('--yql auto create',font='simhei.ttf',fontsize=40)
     final_clip =  concatenate_videoclips([subvideo,subvideo1,subvideo2])
     painting_txt = (CompositeVideoClip([final_clip,txt.set_pos((w/2,h-100))]).set_duration(final_clip.duration))
     

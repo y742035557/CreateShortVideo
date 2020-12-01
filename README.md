@@ -33,7 +33,9 @@ ver:2020/11/25
     追加中文短句翻译为英文
 
     追加动态视频剪辑     
-
+ver:2020/12/01
+    追加诗词API
+    优化文件夹结构
 参考并致谢: 
 https://github.com/xingag/tools_python.git  
 https://github.com/CcphAmy/NetEaseCloudMusic-nonmembership-list-download  
